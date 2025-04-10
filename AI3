@@ -1,3 +1,7 @@
+#two parts prims and kruskal first run prims code then kruskal 
+#part 1 run these first
+
+
 def prim(graph, start):
     mst=[]
     visited=set([start])
@@ -19,6 +23,12 @@ graph={
     'D':{'B':1, 'C':4}
 }
 print(prim(graph, 'A'))
+
+
+
+
+#part 2 after part 1 run these all
+
 
 
 def krushkal(graph):
