@@ -1,36 +1,55 @@
-def dfs(graph, node, visited):
-    if node not in visited:
-        print(node)
-        visited.add(node)
-        for neighbor in graph[node]:
-            dfs(graph, neighbor, visited)
-graph = {
- 'A':['B','C'],
- 'B':['A','D','E'],
- 'C':['A','F','G'],
- 'D':['B'],
- 'E':['B'],
- 'F':['C'],
- 'G':['C']
-}
-dfs(graph, 'B', set())
-
-
-def bfs(graph, start):
-    visited, queue=set(), [start]
-    while queue:
-        vertex=queue.pop(0)
-        if vertex not in visited:
-            visited.add(vertex)
-            queue.extend(graph[vertex]-visited)
-    return visited
+//part 1 if you face indentation error then go to gpt copy code and send msg that remove errors
+//run below part of code first,
+// stands for comments dont run comments it gives errors run only provided code
 graph={
- 'A':set(['B','C']),
- 'B':set(['A','D','E']),
- 'C':set(['A','F','G']),
- 'D':set(['B']),
- 'E':set(['B']),
- 'F':set(['C']),
- 'G':set(['C'])
-}
-bfs(graph, 'A')
+'A':['B','C'],
+'B':['D','E'],
+'C':['F','G'],
+'D':['H','I'],
+'E':[],
+'F':['J','K'],
+'G':[],
+'H':[],
+'I':[],
+'J':[],
+'K':[]
+ }
+
+
+//part2 now run below part of code
+
+
+visited=[]
+queue=[]
+
+//part3 now run below part of code all
+
+
+def bfs(visited, graph,node):
+ visited.append(node)
+ queue.append(node)
+ 
+ while queue:
+     m=queue.pop(0)
+     print(m,end=" ")
+ 
+     for neighbour in graph[m]:
+         if neighbour is not visited:
+             visited.append(neighbour)
+             queue.append(neighbour)
+print("\nFollowing is the BFS:")
+bfs(visited,graph,'A')
+
+visited=set()
+def dfs(visited,graph,node):
+     if node not in visited:
+         print(node)
+         visited.add(node)
+ 
+         for neighbour in graph[node]:
+             dfs(visited,graph,neighbour)
+ 
+print("\n\nFollowing is the DFS:")
+dfs(visited,graph,'A')
+
+
