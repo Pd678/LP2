@@ -1,6 +1,10 @@
 //part 1 if you face indentation error then go to gpt copy code and send msg that remove errors
 //run below part of code first,
 // stands for comments dont run comments it gives errors run only provided code
+
+
+
+
 graph={
 'A':['B','C'],
 'B':['D','E'],
