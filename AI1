@@ -1,10 +1,8 @@
-// if you face indentation error then go to gpt copy code and send msg that remove errors
-//run below part of code first,
-// stands for comments dont run comments it gives errors run only provided code
+##if you face indentation error then go to gpt copy code and send msg that remove errors
+##run below part of code first,
 
 
-
-//part 1
+##part 1
 
 
 
@@ -24,7 +22,7 @@ graph={
  }
 
 
-//part2 now run below part of code
+##part2 now run below part of code
 
 
 visited=[]
@@ -32,7 +30,7 @@ queue=[]
 
 
 
-//part3 now run below part of code all
+##part3 now run below part of code all
 
 
 def bfs(visited, graph,node):
