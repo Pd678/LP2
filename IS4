@@ -1,0 +1,51 @@
+# import random
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+def multiplicative_inverse(e, phi):
+    d = 0
+    x1, x2, y1 = 1, 0, 1
+    temp_phi = phi
+    while e > 0:
+        temp1 = temp_phi // e
+        temp2 = temp_phi - temp1 * e
+        temp_phi, e = e, temp2
+        x = x2 - temp1 * x1
+        y = d - temp1 * y1
+        x2, x1 = x1, x
+        d, y1 = y1, y
+    if temp_phi == 1:
+        return d + phi
+
+def generate_keypair(p, q):
+    n = p * q
+    phi = (p - 1) * (q - 1)
+    e = random.randrange(2, phi)
+    while gcd(e, phi) != 1:
+        e = random.randrange(2, phi)
+    d = multiplicative_inverse(e, phi)
+    return ((e, n), (d, n))
+
+def encrypt(public_key, plaintext):
+    e, n = public_key
+    message_int = int.from_bytes(plaintext.encode(), 'big') 
+    cipher = pow(message_int, e, n)
+    return cipher
+
+def decrypt(private_key, ciphertext):
+    d, n = private_key
+    decrypted_int = pow(ciphertext, d, n)
+    decrypted_text = decrypted_int.to_bytes((decrypted_int.bit_length() + 7) // 8, 'big')
+    return decrypted_text.decode()
+
+p = int(input("Enter First Prime No.: "))
+q = int(input("Enter Second Prime No.: "))
+public_key, private_key = generate_keypair(p, q)
+plaintext = input("Enter PlainText: ")
+ciphertext = encrypt(public_key, plaintext)
+print("Encrypted Text:", ciphertext)
+decrypted_text = decrypt(private_key, ciphertext)
+print("Decrypted Text:", decrypted_text)
