@@ -1,4 +1,3 @@
-#run all code directly
 def chatbot():
     print("chatbot: Hi, I'm Chatbot. How can I help you today?")
     while True:
